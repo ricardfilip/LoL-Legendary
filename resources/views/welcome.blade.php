@@ -39,6 +39,11 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
+                <p class="test">
+                    Summoner Name: {{$summoner_name}}<br>
+                    Level: {{$summoner_level}}<br> <!-- Hue -->
+                    Selfie: <img src="http://ddragon.leagueoflegends.com/cdn/5.20.1/img/profileicon/{{$summoner_selfie}}.png"> <br>
+                </p>
             </div>
         </div>
     </body>
