@@ -12,8 +12,13 @@
  */
 
 Route::get('/', function () {
-    return view('welcome');
+   
+   $title = 'LoL Legendary - Home';
+   return View::make('index')
+          ->with('title',$title);
 });
+
+
 Route::get('/{summoner_name}', function ($summoner_name) {
 
     $ch = curl_init();
