@@ -11,8 +11,10 @@
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">LoL-Legendary</a>
-			<ul class="nav pull-right">
+			<ul class="nav navbar-nav navbar-left">
+				<li><a class="navbar-brand" href="#">LoL-Legendary</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">Login</a></li>
 			</ul>
 		</div>
