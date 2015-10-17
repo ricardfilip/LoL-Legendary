@@ -13,11 +13,18 @@
 
 Route::get('/', function () {
    
-   $title = 'LoL Legendary - Home';
+   $title = 'Legendary - Home';
    return View::make('index')
           ->with('title',$title);
 });
 
+Route::get('register',function(){
+  $title = "Legendary - Register";
+  return View::make('register')
+          ->with('title',$title); //esta cena dá aqui :/
+});
+
+Route::get('/allchamp','ChampionController@getAllChampions');
 
 Route::get('/{summoner_name}', function ($summoner_name) {
 
