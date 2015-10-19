@@ -1,0 +1,10 @@
+/* line 1, ../sass/main.scss */
+li.champion-portrait img {
+  width: 72px;
+  border-radius: 80px; }
+
+/* line 5, ../sass/main.scss */
+li.champion-portrait {
+  list-style: none;
+  float: left;
+  margin: 2px; }
