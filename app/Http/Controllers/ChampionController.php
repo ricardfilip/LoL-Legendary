@@ -1,25 +1,30 @@
 <?php
 
 namespace App\Http\Controllers;
-//cmo é que tu em java wtv consegues fazer este tipo de acessos? :o não é só dar extend e ficas logo com os metodos do pai? o.O  sim mas acho que com o extends tens qu redefiniri ometodo mas pera
+
 
 class ChampionController extends ApiController {
 
     public function getAllChampions() {
-        $url = $this->builURL("static-data","euw","champion","champData=image");
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
+        $output = "";
+        $url = $this->builURL("static-data", "euw", "champion", "champData=image");
+        $output = $this->apiCall($url); //Call the API
+        $output = json_decode($output, true); //Return an array
+        $output = $output['data']; //Dig into the 'data' element and discard the rest
+        ksort($output);  //Sort by Key (Champion name) for prettiness
 
-        curl_setopt($ch, CURLOPT_VERBOSE, 1);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // NOT SECURE  nao faz verificação de certificados e cenas XD not important for now XD
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        // $output contains the output string 
-        $output = json_decode(curl_exec($ch), true);
+        $title = 'Select a Champion';
+        return view('champions', ['title' => $title, 'champions' => ($output)]);
+    }
 
-        $title = 'Champions';
-
-        return view('champions', ['title' => $title,
-            'champions' => $output['data']]);
+    public function getChampionByID($championId) {
+        $url = "";
+        $url = $this->builURL("static-data", "euw", "champion/" . $championId, "champData=all"); //TODO: Decently handle Query strings
+        $champion = $this->apiCall($url);
+        $champion = json_decode($champion, true);
+        return view('champion', [
+            "title" => $champion['name'], // *_*
+            "champion" => $champion
+        ]);
     }
 }
