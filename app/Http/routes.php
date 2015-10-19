@@ -26,23 +26,4 @@ Route::get('register',function(){
 
 Route::get('/allchamp','ChampionController@getAllChampions');
 
-Route::get('/{summoner_name}', function ($summoner_name) {
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/{$summoner_name}?api_key=".config('app.riotkey'));
-    //curl_setopt($ch, CURLOPT_URL, "http://www.aeiou.pt");
-    curl_setopt($ch, CURLOPT_VERBOSE, 1);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0); // NOT SECURE  nao faz verificação de certificados e cenas XD not important for now XD
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    // $output contains the output string 
-    $output = curl_exec($ch);
-    $summoner = json_decode($output);
-    $summoner = $summoner->$summoner_name;
-    return view('welcome', [
-        'summoner_name' => $summoner->name,
-        'summoner_level' => $summoner->summonerLevel,
-        'summoner_selfie' => $summoner->profileIconId
-    ]);
-});
-
+Route::get('/champion/{id}','ChampionController@getChampionByID');
