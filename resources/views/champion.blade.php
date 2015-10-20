@@ -10,15 +10,15 @@
             <h1>{{$champion['name']}}</h1>
         </div>
         <div class="col-md-4">
-            <h4>Base Stats</h4>
-            <table>
+            <h4>Base Stats</h4> 
+            <table id="tb-stats">
                 <tbody>
                 <tr>
                     <td>
                         Attack Damage:
                     </td>
-                    <td>
-                        {{ round($champion['stats']['attackdamage']) }} +({{$champion['stats']["attackdamageperlevel"]}})
+                    <td id="ad">
+                        <span class="result"></span><span class="base">{{ $champion['stats']['attackdamage'] }} </span> +(<span class="perlevel">{{$champion['stats']["attackdamageperlevel"]}}</span>)
                     </td>
                     <td>
                         Ability Power:
@@ -31,22 +31,22 @@
                     <td>
                         Armor:
                     </td>
-                    <td>
-                        {{ floor($champion['stats']['armor']) }} +({{$champion['stats']["armorperlevel"]}})
+                    <td id="armor">
+                        <span class="result"></span><span class="base">{{ $champion['stats']['armor'] }}</span> +( <span class="perlevel">{{$champion['stats']["armorperlevel"]}}</span>)
                     </td>
                     <td>
                         Magic Resistance:
                     </td>
-                    <td>
-                        {{ floor($champion['stats']['spellblock']) }} +({{$champion['stats']["spellblockperlevel"]}})
+                    <td id="mr">
+                        <span class="result"></span><span class="base">{{ $champion['stats']['spellblock'] }}</span> +( <span class="perlevel">{{$champion['stats']["spellblockperlevel"]}}</span>)
                     </td>
                 </tr>
                 <tr>
                     <td>
                         Attack Speed:
                     </td>
-                    <td>
-                        {{ floor($champion['stats']['attackspeedoffset']) }} +({{$champion['stats']["attackspeedperlevel"]}})
+                    <td id="as">
+                        <span class="result"></span><span class="base">{{ $champion['stats']['attackspeedoffset'] }}</span> + (<span class="perlevel">{{$champion['stats']["attackspeedperlevel"]}}</span>)
                     </td>
                     <td>
                         Cooldown Reduction:
@@ -60,20 +60,20 @@
                         Critical Strike:
                     </td>
                     <td>
-                        {{ floor($champion['stats']['crit']) }} +({{$champion['stats']["critperlevel"]}})
+                        {{ $champion['stats']['crit'] }} +({{$champion['stats']["critperlevel"]}})
                     </td>
                     <td>
                         Movement Speed:
                     </td>
                     <td>
-                        {{ floor($champion['stats']['movespeed']) }}
+                        {{ $champion['stats']['movespeed'] }}
                     </td>
                 </tr>
                 </tbody>
             </table>
             <div class="champ-level">
                 <p>Champion level: </p>
-                <select class="form-control">
+                <select class="form-control" id="dropdown-lvl" onchange="UpdateStatsPerLevel(event);">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -127,4 +127,4 @@
     </div>
 
 
-@endsection
+@endsection 
