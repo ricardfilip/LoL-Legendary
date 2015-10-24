@@ -8,8 +8,7 @@
                 @foreach ($champions as $champion)
                     <li class="champion-portrait">
                         <a href="/champion/{{$champion['id']}}">
-                            <img src="http://ddragon.leagueoflegends.com/cdn/5.20.1/img/champion/{{$champion['image']['full'] }}" class="fade in">
-
+                            <img src="/image/champion/{{$champion['image']['full'] }}" onload="this.style.opacity='1'";>
                             <p class="text-center">{{$champion['name']}}</p>
                         </a>
                     </li>
