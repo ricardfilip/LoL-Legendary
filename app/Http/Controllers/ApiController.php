@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use GuzzleHttp\Client;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class ApiController extends Controller {
     private $endpointVersion = [
@@ -10,6 +11,8 @@ class ApiController extends Controller {
         "static" => "v1.2",
         "status" => "v1.0"
     ];
+    //private const JSON_CACHE_TIME = 1440; //minutes
+    //TODO: Get Cache times as a constant Value from the .env file.
 
     public function getApiVersion() {
         //TODO: Fill this
@@ -41,20 +44,27 @@ class ApiController extends Controller {
     }
 
     public function apiCall ($url=""){
-        //Create a new Guzzle Client
-        $client = new Client();
-        $responseContents=""; //Init our response return
-        //Query the API
-        $response = $client->get($url,['verify' => false]); //TODO: Figure out how to verify this via SSL CERTIFICATES
+        //init cache
+        $cacheKey = strtolower(md5($url));//TODO: find a more reliable way to handle cache keys
+        if(Cache::has($cacheKey)){
+            $responseContents = Cache::get($cacheKey);
+            return $responseContents;
+        } else {
+            //Create a new Guzzle Client
+            $client = new Client();
+            $responseContents = ""; //Init our response return
+            //Query the API
+            $response = $client->get($url, ['verify' => false]); //TODO: Figure out how to verify this via SSL CERTIFICATES
+            //Basic Error Handling Based on status Code.
+            if($response->getStatusCode() === 200) { //If we get a successful response
+                //Get the response body Stream
+                $responseBody = $response->getBody();
+                //Get the body Streams' contents
+                $responseContents = $responseBody->getContents();
+            }
+            Cache::put($cacheKey,$responseContents,1);
 
-        //Basic Error Handling Based on status Code.
-        if($response->getStatusCode() === 200){ //If we get a successful response
-            //Get the response body Stream
-            $responseBody = $response->getBody();
-            //Get the body Streams' contents
-            $responseContents = $responseBody->getContents();
         }
-
         return $responseContents;
 
     }
