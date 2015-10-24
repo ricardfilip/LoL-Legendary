@@ -10,36 +10,36 @@ var asBase = 0;
 
 $(document).ready(function () {
     //Populate Base variables on document load
-    adBase = parseFloat($("#ad .base").text());
-    armorBase = parseFloat($("#armor .base").text());
-    mrBase = parseFloat($("#mr .base").text());
-    asBase = parseFloat($("#as .base").text());
+    adBase = parseFloat($("#ad").find (".base").text());
+    armorBase = parseFloat($("#armor").find(".base").text());
+    mrBase = parseFloat($("#mr").find(".base").text());
+    asBase = parseFloat($("#as").find(".base").text());
 });
 
 function UpdateStatsPerLevel() {
     //Get the level selected on the dropdown list
     //Get the table stats elements
-    var lvlSelected = $("#dropdown-lvl option:selected").val();
+    var lvlSelected = $("#dropdown-lvl").find("option:selected").val();
 
     //AD CALCULATIONS
-    var adPerLevel = $("#ad .perlevel").text();
+    var adPerLevel = $("#ad").find(".perlevel").text();
     adResult = calculateGrowthStat(adBase,adPerLevel,lvlSelected);
-    $("#ad .base").text(Math.round(parseFloat(adResult)));
+    $("#ad").find(".base").text(Math.round(parseFloat(adResult)));
 
     //armor CALCULATIONS
-    var armorPerLevel = $("#armor .perlevel").text();
+    var armorPerLevel = $("#armor").find(".perlevel").text();
     armorResult = calculateGrowthStat(armorBase,armorPerLevel,lvlSelected);
-    $("#armor .base").text(Math.round(parseFloat(armorResult)));
+    $("#armor").find(".base").text(Math.round(parseFloat(armorResult)));
 
     //magic resistance CALCULATIONS
-    var mrPerLevel = $("#mr .perlevel").text();
+    var mrPerLevel = $("#mr").find(".perlevel").text();
     mrResult = calculateGrowthStat(mrBase,mrPerLevel,lvlSelected);
-    $("#mr .base").text(Math.round(parseFloat(mrResult)));
+    $("#mr").find(".base").text(Math.round(parseFloat(mrResult)));
 
     //attack speed CALCULATIONS
-    var asPerLevel = $("#as .perlevel").text();
+    var asPerLevel = $("#as").find(".perlevel").text();
     asResult = calculateGrowthStat(getBaseAs(asBase),asPerLevel,lvlSelected);
-    $("#as .base").text(Math.round(parseFloat(asResult)));
+    $("#as").find(".base").text(Math.round(parseFloat(asResult)));
 }
 
 
