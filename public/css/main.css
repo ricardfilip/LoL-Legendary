@@ -1,10 +1,27 @@
+/* line 1, ../sass/main.scss */
 li.champion-portrait img {
   width: 72px;
+  height: 72px;
   border-radius: 80px;
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+          transition: opacity 1s;
 }
 
+/* line 8, ../sass/main.scss */
 li.champion-portrait {
   list-style: none;
   float: left;
   margin: 2px;
+  width: 95px;
+  height: 110px;
+  text-align: center;
+}
+
+/* line 17, ../sass/main.scss */
+.champion-list {
+  overflow: hidden;
+  padding: 0;
+  text-align: center;
+  margin: 25px;
 }
