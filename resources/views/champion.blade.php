@@ -7,7 +7,8 @@
             <h4 class="text-center">{{$champion['name']}}</h4>
 
             <div class="text-center">
-                <img src="http://ddragon.leagueoflegends.com/cdn/5.20.1/img/champion/{{$champion['image']['full'] }}">
+                <!--<img src="http://ddragon.leagueoflegends.com/cdn/5.20.1/img/champion/{{$champion['image']['full'] }}">-->
+                <img src="/image/champion/{{$champion['image']['full'] }}">
             </div>
         </div>
         <div class="col-md-6">
@@ -15,28 +16,30 @@
                 <div class="col-sm-6">
                     <h4 class="text-left">Base Stats</h4>
                 </div>
-                <div class="champ-level text-right form-group form-inline col-sm-6">
-                    <label for="dropdown-lvl">Level:</label>
-                    <select class="form-control" id="dropdown-lvl" onchange="UpdateStatsPerLevel(event);">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
-                        <option>14</option>
-                        <option>15</option>
-                        <option>16</option>
-                        <option>17</option>
-                        <option>18</option>
-                    </select>
+                <div class="champ-level text-right form-inline col-sm-6">
+                    <div id="champion-level" class="form-group">
+                        <label for="dropdown-lvl">Level:</label>
+                        <select class="form-control" id="dropdown-lvl" onchange="UpdateStatsPerLevel(event);">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                            <option>13</option>
+                            <option>14</option>
+                            <option>15</option>
+                            <option>16</option>
+                            <option>17</option>
+                            <option>18</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <table id="tb-stats" class="table">
@@ -131,7 +134,7 @@
             </table>
         </div>
     </div>
-    <!-- -->
+    <!-- Tab menu -->
     <div class="row">
         <div class="col-sm-12">
             <!-- Nav tabs -->
@@ -151,6 +154,7 @@
             </ul>
 
             <!-- Tab panes -->
+            <!-- TODO: Ajaxify tab loading via routes. Ex: a href="/tab/items" activates tabs.items and loads into view -->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="items">@include("tabs.items")</div>
                 <div role="tabpanel" class="tab-pane" id="runes">@include("tabs.runes")</div>
@@ -158,7 +162,7 @@
                 <div role="tabpanel" class="tab-pane" id="graphs">Not yet</div>
             </div>
             <script>
-                $("#tabs a").click(function (event) {
+                $("#tabs").find("a").click(function (event) {
                     event.preventDefault();
                     $(this).tab('show');
                     console.log("clicked");
