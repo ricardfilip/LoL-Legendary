@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="{{url("/css/main.css")}}">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
@@ -14,7 +14,7 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav navbar-left">
-				<li><a class="navbar-brand" href="/">LoL-Legendary</a></li>
+				<li><a class="navbar-brand" href="{{url("/")}}">LoL-Legendary</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" >Login</a>
@@ -24,5 +24,5 @@
 	<div class="container">
 		@yield('content')
 	</div>
-<script src="/js/main.js"></script>
+<script src="{{url("/js/main.js")}}"></script>
 </html>

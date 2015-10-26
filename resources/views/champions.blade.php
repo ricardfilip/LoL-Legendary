@@ -7,8 +7,8 @@
             <ul class="champion-list">
                 @foreach ($champions as $champion)
                     <li class="champion-portrait">
-                        <a href="/champion/{{$champion['id']}}">
-                            <img src="/image/champion/{{$champion['image']['full'] }}" onload="this.style.opacity='1'";>
+                        <a href="{{action("ChampionController@getChampionByID",array($champion['id']))}}">
+                            <img src="{{action("ImageController@getImage",array("champion",$champion['image']['full']))}}" onload="this.style.opacity='1'">
                             <p class="text-center">{{$champion['name']}}</p>
                         </a>
                     </li>

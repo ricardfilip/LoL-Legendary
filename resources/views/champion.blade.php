@@ -7,8 +7,7 @@
             <h4 class="text-center">{{$champion['name']}}</h4>
 
             <div class="text-center">
-                <!--<img src="http://ddragon.leagueoflegends.com/cdn/5.20.1/img/champion/{{$champion['image']['full'] }}">-->
-                <img src="/image/champion/{{$champion['image']['full'] }}">
+                <img src="{{action("ImageController@getImage",array("champion",$champion['image']['full']))}}">
             </div>
         </div>
         <div class="col-md-6">
