@@ -27,7 +27,7 @@ class ApiController extends Controller {
      * @param string $parameter Query Parameters to attach to the end of the URL
      * @return string Returns A Completed string to Query
      */
-    public function builURL($endpoint, $region = "euw", $request = "", $parameter ="") {
+    public function buildURL($endpoint, $region = "euw", $request = "", $parameter ="") {
         //TODO: Try use of http_build_url http://php.net/manual/en/function.http-build-url.php
         $url=""; //Init our url return
         $baseUrl = ($endpoint==="static-data"? $baseUrl= "https://" . "global" . ".api.pvp.net/api/lol":$baseUrl= "https://" . $region . ".api.pvp.net/api/lol");
@@ -62,7 +62,7 @@ class ApiController extends Controller {
                 //Get the body Streams' contents
                 $responseContents = $responseBody->getContents();
             }
-            Cache::put($cacheKey,$responseContents,1);
+            Cache::put($cacheKey,$responseContents,1400);
 
         }
         return $responseContents;
