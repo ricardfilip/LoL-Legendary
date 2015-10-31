@@ -20,3 +20,12 @@ li.champion-portrait {
   text-align: center;
   margin:25px;
 }
+
+#itemsContainer .mix{
+  display: none;
+}
+
+.filter.active{
+  font-weight: bolder;
+  text-decoration: underline;
+}

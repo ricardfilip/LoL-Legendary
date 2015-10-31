@@ -35,3 +35,6 @@
     //Test Image cache layer
     Route::get("/image/{category}/{imageFile}","ImageController@getImage");
 
+    Route::get("tab/{query}", "TabController@displayTab");
+
+
