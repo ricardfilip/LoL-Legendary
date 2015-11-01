@@ -42,8 +42,10 @@
                     @endif
                     >
                         {{-- Had to be a div for the sprite to align correctly--}}
-                        <div class="img item" style="height:{{$item['image']['w']}}px;width:{{$item['image']['h']}}px;background: url('{{action("ImageController@getImage",array("sprite",$item['image']['sprite']))}}') -{{$item['image']['x']}}px -{{$item['image']['y']}}px no-repeat;"></div>
-
+                        <div class="img item"
+                             style="height:{{$item['image']['w']}}px;width:{{$item['image']['h']}}px;background: url('{{action("ImageController@getImage",array("sprite",$item['image']['sprite']))}}') -{{$item['image']['x']}}px -{{$item['image']['y']}}px no-repeat;"
+                             title="<h5><b>{{$item['name']}}</b></h5><br><p>{{$item['description']}}</p><p><i>@if(isset($item['plaintext'])){{$item['plaintext']}}@endif</i></p>"
+                                ></div>
                 </div>
                 @endif
             @endforeach
@@ -51,14 +53,18 @@
     </div>
 </div>
 <script>
+
     $(document).ready(function () {
+{{-- Tooltipster Init (http://iamceege.github.io/tooltipster/)--}}
         $(".item").tooltipster({
-            content: "Hello"
+            contentAsHTML:true,
+            maxWidth: 400,
         });
+{{-- MixitUp Init (https://mixitup.kunkalabs.com/) --}}
         $('#itemsContainer').mixItUp({
             controls: {
                 toggleFilterButtons: true,
-                toggleLogic: 'and'
+                toggleLogic: 'and',
             }
         });
     });
