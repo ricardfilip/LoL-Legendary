@@ -77,7 +77,6 @@
             </ul>
 
             <!-- Tab panes -->
-            <!-- TODO: Ajaxify tab loading via routes. Ex: a href="/tab/items" activates tabs.items and loads into view -->
             <!-- TODO: Maybe use some sort of PJAX (pushState + ajax) in the future-->
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane" id="items">@yield("items")</div>
